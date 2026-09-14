@@ -4,21 +4,26 @@ namespace Tests\Feature;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 use CodeIgniter\Test\CIUnitTestCase;
+use CodeIgniter\Test\DatabaseTestTrait;
 use CodeIgniter\Test\FeatureTestTrait;
+use Tests\Support\Database\Seeds\Tfa2Seeder;
 
 /**
  * @internal
  */
 final class PosFoundationsTest extends CIUnitTestCase
 {
+    use DatabaseTestTrait;
     use FeatureTestTrait;
+
+    protected $seed = Tfa2Seeder::class;
 
     public function testHomePageReturnsOkAndDisplaysElements(): void
     {
         $result = $this->get('/');
 
         $result->assertOK();
-        $result->assertSee('Point-of-Sale Foundations');
+        $result->assertSee('Point-of-Sale Database');
         $result->assertSee('Customer Accounts');
         $result->assertSee('User Accounts');
         $result->assertSee('About');
@@ -28,7 +33,7 @@ final class PosFoundationsTest extends CIUnitTestCase
         $result->assertSee('Skip to main content');
         $result->assertSee('href="#main-content"');
         $result->assertSee('role="banner"');
-        $result->assertSee('role="main"'); // or main id="main-content"
+        $result->assertSee('role="main"');
         $result->assertSee('role="contentinfo"');
         $result->assertSee('01');
         $result->assertSee('Registered Customers');
@@ -41,10 +46,12 @@ final class PosFoundationsTest extends CIUnitTestCase
         $result = $this->get('about');
 
         $result->assertOK();
-        $result->assertSee('About POS Foundations');
+        $result->assertSee('About POS Database');
         $result->assertSee('Counter Service &amp; Transaction Flow');
-        $result->assertSee('Role-Based Access Control');
-        $result->assertSee('OPERATIONS POLICY');
+        $result->assertSee('Relational Database &amp; Models');
+        $result->assertSee('DATABASE ARCHITECTURE');
+        $result->assertSee('CustomerModel:');
+        $result->assertSee('UserModel:');
         $result->assertSee('aria-current="page"');
 
         // Extended assertions for landmarks and connected 4-step flow
@@ -54,7 +61,7 @@ final class PosFoundationsTest extends CIUnitTestCase
         $result->assertSee('2. Item &amp; Order Verification');
         $result->assertSee('3. Staff Processing');
         $result->assertSee('4. Sale Completion &amp; Receipt');
-        $result->assertSee('STORE ACCESS PROTOCOL');
+        $result->assertSee('MODEL PERSISTENCE PROTOCOL');
     }
 
     public function testCustomersPageReturnsOkAndDisplaysRecords(): void
@@ -93,7 +100,7 @@ final class PosFoundationsTest extends CIUnitTestCase
         $result->assertSee('Total Users');
         $result->assertSee('admin.reyes');
         $result->assertSee('Carlos Reyes');
-        $result->assertSee('Store Administrator');
+        $result->assertSee('2026-01-15 08:00:00');
         $result->assertSee('mgr.castro');
         $result->assertSee('Beatriz Castro');
         $result->assertSee('cashier.valdez');
@@ -102,13 +109,16 @@ final class PosFoundationsTest extends CIUnitTestCase
         $result->assertSee('<table class="data-table">');
         $result->assertSee('scope="col"');
 
-        // Extended assertions for responsive data-labels and role badges
+        // Assert role is NOT displayed
+        $result->assertDontSee('System Role');
+        $result->assertDontSee('Store Administrator');
+
+        // Extended assertions for responsive data-labels and created_at
         $result->assertSee('Skip to main content');
         $result->assertSee('aria-current="page"');
         $result->assertSee('data-label="Username"');
         $result->assertSee('data-label="Full Name"');
-        $result->assertSee('data-label="System Role"');
-        $result->assertSee('role-badge');
+        $result->assertSee('data-label="Created At"');
         $result->assertSee('stat-giant');
     }
 
@@ -129,4 +139,3 @@ final class PosFoundationsTest extends CIUnitTestCase
         $this->get('non-existent-pos-route-404');
     }
 }
-
