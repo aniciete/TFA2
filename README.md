@@ -1,64 +1,113 @@
-# Point-of-Sale (POS) Foundations
+# Point-of-Sale (POS) Database
 
 **Course:** IT0049 (Web System Technologies)  
-**Assessment:** Technical Formative Assessment 1 (TFA1)  
+**Assessment:** Technical Formative Assessment 2 (TFA2)  
 **Framework:** CodeIgniter 4 (v4.7.4)  
-**Hosted Application:** [https://tfa1.freedev.app](https://tfa1.freedev.app)  
-**GitHub Repository:** [https://github.com/aniciete/TFA1](https://github.com/aniciete/TFA1)
+**Hosted Application:** [https://tfa2.freedev.app](https://tfa2.freedev.app)  
+**GitHub Repository:** [https://github.com/aniciete/TFA2](https://github.com/aniciete/TFA2)  
 
 ---
 
 ## 1. Project Overview
 
-This project is the initial foundation of a Point-of-Sale (POS) system built using CodeIgniter 4 and the Model-View-Controller (MVC) architectural pattern. It focuses on establishing clear URL routing, controller actions, view layouts, and temporary in-memory static array data structures before introducing relational database persistence in future modules.
+This project extends the Point-of-Sale (POS) application foundation from TFA1 by replacing in-memory static controller arrays with a relational MySQL database. CodeIgniter 4 Models wrap the database tables and leverage Query Builder methods (`findAll()`, `orderBy()`) to retrieve data cleanly without writing raw SQL.
 
 ### Required Pages and Route Table
 
-| URL Route | Controller Action | View Template | Purpose |
-| :--- | :--- | :--- | :--- |
-| `/` | `App\Controllers\Pages::home` | `pages/home.php` | POS application landing page with architectural overview and quick links |
-| `/about` | `App\Controllers\Pages::about` | `pages/about.php` | MVC request execution flow and design documentation |
-| `/customers` | `App\Controllers\Customers::index` | `customers/index.php` | Customer accounts directory listing full name, email, and phone |
-| `/users` | `App\Controllers\Users::index` | `users/index.php` | Staff user accounts directory listing username, full name, and role |
+| URL Route | Controller Action | Model Used | View Template | Purpose |
+| :--- | :--- | :--- | :--- | :--- |
+| `/` | `App\Controllers\Pages::home` | N/A | `pages/home.php` | POS application landing page with architectural overview and quick links |
+| `/about` | `App\Controllers\Pages::about` | N/A | `pages/about.php` | Operational procedure and database model architecture overview |
+| `/customers` | `App\Controllers\Customers::index` | `CustomerModel` | `customers/index.php` | Customer accounts directory listing full name, email, phone, and record count |
+| `/users` | `App\Controllers\Users::index` | `UserModel` | `users/index.php` | Staff user accounts directory listing username, full name, and created date |
 
 ---
 
 ## 2. Technical Stack & Prerequisites
 
 - **Language:** PHP 8.2 or higher (tested on PHP 8.5)
-- **Required PHP Extensions:** `intl`, `mbstring`, `json`, `curl`
+- **Required PHP Extensions:** `intl`, `mbstring`, `json`, `curl`, `mysqli`, `pdo_sqlite` (for PHPUnit)
 - **Package Manager:** Composer 2.x
 - **Framework:** CodeIgniter 4.7.4
-- **Database:** None (TFA1 intentionally uses in-memory static PHP arrays inside controller methods; see `database/no_database_required.sql`)
+- **Database:** MySQL 8.x / MariaDB 10.x (Local & Production), SQLite3 (in-memory for automated tests)
 
 ---
 
-## 3. Local Development Setup
+## 3. Database Schema & Setup
 
-### 3.1 Clone the Repository
-```bash
-git clone https://github.com/aniciete/TFA1.git
-cd TFA1
+The database schema and sample records are defined in [`database/tfa2_pos.sql`](database/tfa2_pos.sql):
+
+### 3.1 Schemas
+
+```sql
+CREATE TABLE customers (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone VARCHAR(20),
+  created_at DATETIME NOT NULL
+);
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  full_name VARCHAR(100) NOT NULL,
+  created_at DATETIME NOT NULL
+);
 ```
 
-### 3.2 Install Dependencies
+### 3.2 Importing the Database
+
+To create and populate the `tfa2_pos` database locally using the MySQL CLI:
+
+```bash
+mysql -u root -p < database/tfa2_pos.sql
+```
+
+Or via phpMyAdmin / GUI:
+1. Open phpMyAdmin.
+2. Click **Import**.
+3. Choose `database/tfa2_pos.sql`.
+4. Click **Go**.
+
+---
+
+## 4. Local Development Setup
+
+### 4.1 Clone the Repository
+```bash
+git clone https://github.com/aniciete/TFA2.git
+cd TFA2
+```
+
+### 4.2 Install Dependencies
 ```bash
 composer install
 ```
 
-### 3.3 Configure Environment File
+### 4.3 Configure Environment File
 Copy the example environment template to `.env`:
 ```bash
 cp env .env
 ```
-Ensure the following variables are set in `.env`:
+
+Ensure the following variables are configured in `.env` for your local MySQL server:
 ```ini
 CI_ENVIRONMENT = development
+
 app.baseURL = 'http://localhost:8080/'
 app.indexPage = ''
+
+database.default.hostname = localhost
+database.default.database = tfa2_pos
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+database.default.DBPrefix = 
+database.default.port = 3306
 ```
 
-### 3.4 Start the Local Development Server
+### 4.4 Start the Local Development Server
 ```bash
 php spark serve
 ```
@@ -66,42 +115,73 @@ Access the application locally at: **[http://localhost:8080](http://localhost:80
 
 ---
 
-## 4. Architectural & Data Design
+## 5. Architectural & Data Design
 
-### Static Data Source Implementation
-In accordance with the TFA1 laboratory instructions, the application does not connect to a database:
-- `App\Controllers\Customers::index()` defines a static array containing 5 customer profiles (`full_name`, `email`, `phone`).
-- `App\Controllers\Users::index()` defines a static array containing 5 staff profiles (`username`, `full_name`, `role`).
-- Views render these records dynamically using PHP `foreach` loops with `esc()` data sanitization.
-- The repository provides `database/no_database_required.sql` as a documented no-op reference fulfilling the submission rubric.
+### 5.1 Models and Query Builder
+In accordance with TFA2 specifications:
+- `App\Models\CustomerModel`:
+  - Maps to table `customers`.
+  - Primary key: `id`.
+  - Return type: `array`.
+  - Allowed fields: `full_name`, `email`, `phone`, `created_at`.
+- `App\Models\UserModel`:
+  - Maps to table `users`.
+  - Primary key: `id`.
+  - Return type: `array`.
+  - Allowed fields: `username`, `full_name`, `created_at`.
+
+### 5.2 Controllers
+Controllers instantiate models and fetch data using Query Builder methods without raw SQL:
+- `Customers::index()`:
+  ```php
+  $customers = (new CustomerModel())->orderBy('id', 'ASC')->findAll();
+  ```
+- `Users::index()`:
+  ```php
+  $users = (new UserModel())->orderBy('id', 'ASC')->findAll();
+  ```
+
+### 5.3 Views & Sanitization
+Views receive `$customers` and `$users` arrays, iterating over records using PHP `foreach` and sanitizing all output with `esc()` to prevent XSS.
 
 ---
 
-## 5. Running Automated Tests
+## 6. Running Automated Tests
 
-Run the test suite using PHPUnit:
+Automated testing uses CodeIgniter's in-memory SQLite test connection (`:memory:`), isolating test runs from local MySQL:
+
 ```bash
 vendor/bin/phpunit
 ```
+
 The test suite validates:
 - System and path health (`HealthTest`).
-- HTTP 200 responses across all four defined routes (`PosFoundationsTest`).
-- Semantic HTML table rendering, accessible navigation (`aria-current="page"`), and record counts.
-- 404 handling on non-existent routes with auto-routing disabled.
+- Model data retrieval, primary keys, schema field constraints, and absence of deprecated role columns (`ModelsTest`).
+- HTTP 200 responses across all four routes with database-backed record rendering (`PosFoundationsTest`).
+- Strict 404 routing enforcement when auto-routing is disabled.
 
 ---
 
-## 6. InfinityFree Deployment Procedure
+## 7. InfinityFree Deployment Procedure
 
-This project includes automated packaging and shared-hosting configurations for InfinityFree Apache hosting:
+This repository includes an automated packaging script for InfinityFree Apache hosting:
 
-1. Generate a lean production build archive (excluding development packages and test suites):
+1. Generate a lean production build archive:
    ```bash
    ./build-infinityfree-zip.sh
    ```
 2. In the InfinityFree **Control Panel (VistaPanel)**:
+   - Create a MySQL database (e.g. `if0_XXXXXX_tfa2`).
+   - Open **phpMyAdmin** for the new database and import `database/tfa2_pos.sql`.
    - Ensure the PHP version is set to **PHP 8.2** or **PHP 8.3**.
-3. Open the **Online File Manager** and navigate into the `htdocs/` folder (or `tfa1.freedev.app/htdocs/`).
-4. Delete default placeholder files (`index2.html` or `default.php`).
-5. Upload `tfa1-infinityfree.zip` and select **Extract**.
-6. Verify the live site at: **[https://tfa1.freedev.app](https://tfa1.freedev.app)**.
+3. Open the **Online File Manager** and navigate into `htdocs/` (or `tfa2.freedev.app/htdocs/`).
+4. Delete any default placeholder files (`index2.html` or `default.php`).
+5. Upload `tfa2-infinityfree.zip` and select **Extract**.
+6. Edit the extracted `.env` file with your VistaPanel MySQL host, username, database, and password:
+   ```ini
+   database.default.hostname = sqlXXX.infinityfree.com
+   database.default.database = if0_XXXXXX_tfa2
+   database.default.username = if0_XXXXXX
+   database.default.password = your_vpanel_password
+   ```
+7. Verify the live site at: **[https://tfa2.freedev.app](https://tfa2.freedev.app)**.
