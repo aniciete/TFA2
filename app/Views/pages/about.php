@@ -92,20 +92,32 @@
                 </p>
                 <div class="memo-meta-ledger">
                     <div class="ledger-row">
-                        <span class="ledger-term">CustomerModel:</span>
-                        <span class="ledger-value">Maps to customers table (id, full_name, email, phone, created_at)</span>
+                        <div class="ledger-row-header">
+                            <span class="ledger-term">CustomerModel:</span>
+                            <span class="ledger-tag">customers table</span>
+                        </div>
+                        <span class="ledger-value"><code>id</code>, <code>full_name</code>, <code>email</code>, <code>phone</code>, <code>created_at</code></span>
                     </div>
                     <div class="ledger-row">
-                        <span class="ledger-term">UserModel:</span>
-                        <span class="ledger-value">Maps to users table (id, username, full_name, created_at)</span>
+                        <div class="ledger-row-header">
+                            <span class="ledger-term">UserModel:</span>
+                            <span class="ledger-tag">users table</span>
+                        </div>
+                        <span class="ledger-value"><code>id</code>, <code>username</code>, <code>full_name</code>, <code>created_at</code></span>
                     </div>
                     <div class="ledger-row">
-                        <span class="ledger-term">Query Builder:</span>
-                        <span class="ledger-value">Retrieves records using orderBy('id', 'ASC')-&gt;findAll()</span>
+                        <div class="ledger-row-header">
+                            <span class="ledger-term">Query Builder:</span>
+                            <span class="ledger-tag">Active Record</span>
+                        </div>
+                        <span class="ledger-value"><code>orderBy('id', 'ASC')-&gt;findAll()</code></span>
                     </div>
                     <div class="ledger-row">
-                        <span class="ledger-term">Data Sanitization:</span>
-                        <span class="ledger-value">All view variables safely rendered via esc()</span>
+                        <div class="ledger-row-header">
+                            <span class="ledger-term">Data Sanitization:</span>
+                            <span class="ledger-tag">Security</span>
+                        </div>
+                        <span class="ledger-value">All view variables safely rendered via <code>esc()</code></span>
                     </div>
                 </div>
             </div>
