@@ -4,9 +4,6 @@
 -- Database Export: tfa2_pos.sql
 -- ====================================================================
 
-CREATE DATABASE IF NOT EXISTS `tfa2_pos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `tfa2_pos`;
-
 -- --------------------------------------------------------
 -- Table structure for table `customers`
 -- --------------------------------------------------------
