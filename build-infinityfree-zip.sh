@@ -2,10 +2,10 @@
 set -e
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TMP_DIR="/tmp/tfa1-deploy-$$"
-OUTPUT_ZIP="$DIR/tfa1-infinityfree.zip"
+TMP_DIR="/tmp/tfa2-deploy-$$"
+OUTPUT_ZIP="$DIR/tfa2-infinityfree.zip"
 
-echo "==> Packaging lean production build for InfinityFree (tfa1.freedev.app)..."
+echo "==> Packaging lean production build for InfinityFree (tfa2.freedev.app)..."
 rm -rf "$TMP_DIR" "$OUTPUT_ZIP"
 mkdir -p "$TMP_DIR"
 
@@ -50,7 +50,7 @@ rm -rf "$TMP_DIR"
 
 # Validate package integrity
 echo "==> Verifying package contents..."
-for req in "public/index.php" ".htaccess" "public/.htaccess" "vendor/autoload.php" ".env"; do
+for req in "public/index.php" ".htaccess" "public/.htaccess" "vendor/autoload.php" ".env" "database/tfa2_pos.sql"; do
     if ! unzip -l "$OUTPUT_ZIP" | grep -q "$req"; then
         echo "Error: Required file $req is missing from $OUTPUT_ZIP" >&2
         exit 1
