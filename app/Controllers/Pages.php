@@ -7,7 +7,7 @@ class Pages extends BaseController
     public function home(): string
     {
         return view('pages/home', [
-            'title'      => 'Home | POS Foundations',
+            'title'      => 'Home | POS Database',
             'activePage' => 'home',
         ]);
     }
@@ -15,7 +15,7 @@ class Pages extends BaseController
     public function about(): string
     {
         return view('pages/about', [
-            'title'      => 'About | POS Foundations',
+            'title'      => 'About | POS Database',
             'activePage' => 'about',
         ]);
     }
