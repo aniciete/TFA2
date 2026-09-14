@@ -4,15 +4,15 @@
 <div class="about-container">
     <header class="section-header">
         <div class="tag-row">
-            <span class="market-tag">System Overview &bull; Architecture</span>
+            <span class="market-tag">Store Operations &bull; Overview</span>
             <span class="status-indicator">
                 <span class="status-pip" aria-hidden="true"></span>
-                <span class="status-label">Documented Flow</span>
+                <span class="status-label">Operational Guide</span>
             </span>
         </div>
-        <h1 class="page-title">About This Application</h1>
+        <h1 class="page-title">About POS Foundations</h1>
         <p class="section-lead">
-            Technical Formative Assessment 1 focuses on establishing the front controller, routing tables, controllers, and view rendering layers in CodeIgniter 4.
+            POS Foundations delivers front-counter retail management, customer relationship directories, and staff access administration designed for modern store operations.
         </p>
     </header>
 
@@ -20,9 +20,9 @@
         <!-- Connected 4-Step Flow -->
         <section class="flow-section" aria-labelledby="flow-heading">
             <div class="flow-mast">
-                <h2 id="flow-heading" class="section-heading">Request Execution Flow</h2>
+                <h2 id="flow-heading" class="section-heading">Counter Service &amp; Transaction Flow</h2>
                 <p class="section-sublead">
-                    In CodeIgniter 4, each user action follows an explicit Model-View-Controller path without runtime guesswork:
+                    Standard counter operating procedure from customer greeting through receipt settlement:
                 </p>
             </div>
 
@@ -33,9 +33,9 @@
                         <div class="track-line"></div>
                     </div>
                     <div class="node-card">
-                        <div class="node-kicker">STAGE 01 &bull; INGRESS</div>
-                        <strong class="flow-step-title">1. Incoming URL</strong>
-                        <p class="flow-step-text">The browser issues an HTTP GET request to a path such as <code>/customers</code> or <code>/users</code>.</p>
+                        <div class="node-kicker">STEP 01 &bull; CHECK-IN</div>
+                        <strong class="flow-step-title">1. Customer Identification</strong>
+                        <p class="flow-step-text">Cashiers look up registered retail or commercial customer profiles to verify account status, contact preferences, and special pricing.</p>
                     </div>
                 </li>
 
@@ -45,9 +45,9 @@
                         <div class="track-line"></div>
                     </div>
                     <div class="node-card">
-                        <div class="node-kicker">STAGE 02 &bull; DISPATCH</div>
-                        <strong class="flow-step-title">2. Route Matching</strong>
-                        <p class="flow-step-text">The router in <code>app/Config/Routes.php</code> resolves the URL to a specific controller and action method.</p>
+                        <div class="node-kicker">STEP 02 &bull; ORDER ENTRY</div>
+                        <strong class="flow-step-title">2. Item &amp; Order Verification</strong>
+                        <p class="flow-step-text">The point-of-sale terminal catalogs selected retail items, applies relevant promotions, and calculates subtotal balances.</p>
                     </div>
                 </li>
 
@@ -57,9 +57,9 @@
                         <div class="track-line"></div>
                     </div>
                     <div class="node-card">
-                        <div class="node-kicker">STAGE 03 &bull; PROCESS</div>
-                        <strong class="flow-step-title">3. Controller Execution</strong>
-                        <p class="flow-step-text">The controller method prepares required data, such as a static array of records, and calls the view renderer.</p>
+                        <div class="node-kicker">STEP 03 &bull; STAFF PROCESSING</div>
+                        <strong class="flow-step-title">3. Staff Processing</strong>
+                        <p class="flow-step-text">Orders are authorized under active staff login credentials, maintaining clear accountability across all cashier and supervisor shifts.</p>
                     </div>
                 </li>
 
@@ -69,39 +69,43 @@
                         <div class="track-terminal"></div>
                     </div>
                     <div class="node-card">
-                        <div class="node-kicker">STAGE 04 &bull; RESPONSE</div>
-                        <strong class="flow-step-title">4. View Presentation</strong>
-                        <p class="flow-step-text">The view iterates the data, applies HTML escaping, and returns the finished response to the client.</p>
+                        <div class="node-kicker">STEP 04 &bull; RECEIPT ISSUANCE</div>
+                        <strong class="flow-step-title">4. Sale Completion &amp; Receipt</strong>
+                        <p class="flow-step-text">The terminal finalizes payment processing, updates customer account history, and issues itemized store receipts.</p>
                     </div>
                 </li>
             </ol>
         </section>
 
-        <!-- Contrasting Implementation Note -->
+        <!-- Operations Policy Memo -->
         <aside class="storage-dispatch-memo" aria-labelledby="memo-heading">
             <div class="memo-mast">
                 <div class="memo-top-row">
-                    <span class="memo-stamp">ARCHITECTURAL MEMORANDUM</span>
-                    <span class="memo-ref">REF // TFA1-STORAGE</span>
+                    <span class="memo-stamp">OPERATIONS POLICY</span>
+                    <span class="memo-ref">STORE ACCESS PROTOCOL</span>
                 </div>
-                <h2 id="memo-heading" class="memo-title">Data Storage Design Decision</h2>
+                <h2 id="memo-heading" class="memo-title">Role-Based Access Control</h2>
             </div>
             <div class="memo-content">
                 <p class="memo-lead">
-                    This application deliberately uses in-memory static PHP arrays inside controller methods instead of a live database. This allows validating the routing and templating pipeline before adding schema migrations, seeders, and relational queries in subsequent modules.
+                    POS Foundations enforces strict operational separation across store personnel to safeguard register drawers, verify customer details, and maintain accountability across daily floor operations.
                 </p>
                 <div class="memo-meta-ledger">
                     <div class="ledger-row">
-                        <span class="ledger-term">Storage Mechanism:</span>
-                        <span class="ledger-value">In-Memory Static Arrays</span>
+                        <span class="ledger-term">Store Administrator:</span>
+                        <span class="ledger-value">Full operational control and configuration</span>
                     </div>
                     <div class="ledger-row">
-                        <span class="ledger-term">Database Requirement:</span>
-                        <span class="ledger-value">None (Phase 1 Pipeline Validation)</span>
+                        <span class="ledger-term">Shift Supervisor:</span>
+                        <span class="ledger-value">Register approvals and transaction overrides</span>
                     </div>
                     <div class="ledger-row">
-                        <span class="ledger-term">Controller State:</span>
-                        <span class="ledger-value">App\Controllers\Customers &amp; Users</span>
+                        <span class="ledger-term">Cashier Staff:</span>
+                        <span class="ledger-value">Checkout sales and receipt issuance</span>
+                    </div>
+                    <div class="ledger-row">
+                        <span class="ledger-term">Inventory Clerk:</span>
+                        <span class="ledger-value">Stock directory and catalog updates</span>
                     </div>
                 </div>
             </div>

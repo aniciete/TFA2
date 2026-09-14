@@ -31,7 +31,7 @@ final class PosFoundationsTest extends CIUnitTestCase
         $result->assertSee('role="main"'); // or main id="main-content"
         $result->assertSee('role="contentinfo"');
         $result->assertSee('01');
-        $result->assertSee('Configured Routes');
+        $result->assertSee('Registered Customers');
         $result->assertSee('assets/css/style.css');
         $result->assertSee('favicon.svg');
     }
@@ -41,20 +41,20 @@ final class PosFoundationsTest extends CIUnitTestCase
         $result = $this->get('about');
 
         $result->assertOK();
-        $result->assertSee('About This Application');
-        $result->assertSee('Request Execution Flow');
-        $result->assertSee('Data Storage Design Decision');
-        $result->assertSee('static PHP arrays');
+        $result->assertSee('About POS Foundations');
+        $result->assertSee('Counter Service &amp; Transaction Flow');
+        $result->assertSee('Role-Based Access Control');
+        $result->assertSee('OPERATIONS POLICY');
         $result->assertSee('aria-current="page"');
 
         // Extended assertions for landmarks and connected 4-step flow
         $result->assertSee('Skip to main content');
         $result->assertSee('02');
-        $result->assertSee('1. Incoming URL');
-        $result->assertSee('2. Route Matching');
-        $result->assertSee('3. Controller Execution');
-        $result->assertSee('4. View Presentation');
-        $result->assertSee('ARCHITECTURAL MEMORANDUM');
+        $result->assertSee('1. Customer Identification');
+        $result->assertSee('2. Item &amp; Order Verification');
+        $result->assertSee('3. Staff Processing');
+        $result->assertSee('4. Sale Completion &amp; Receipt');
+        $result->assertSee('STORE ACCESS PROTOCOL');
     }
 
     public function testCustomersPageReturnsOkAndDisplaysRecords(): void

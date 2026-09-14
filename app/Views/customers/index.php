@@ -5,10 +5,10 @@
     <header class="directory-header">
         <div class="header-main">
             <div class="tag-row">
-                <span class="market-tag">Directory // 01</span>
+                <span class="market-tag">Retail Directory</span>
                 <span class="status-indicator">
                     <span class="status-pip" aria-hidden="true"></span>
-                    <span class="status-label">In-Memory Store</span>
+                    <span class="status-label">Active Directory</span>
                 </span>
             </div>
             <h1 class="page-title">Customer Accounts</h1>
@@ -49,7 +49,7 @@
 
     <div class="data-notice">
         <span class="notice-icon" aria-hidden="true">&bull;</span>
-        <p>Data source: In-memory static array defined inside <code>App\Controllers\Customers::index()</code>.</p>
+        <p>Active client directory verified for store checkout and billing communications.</p>
     </div>
 </div>
 <?= $this->endSection() ?>

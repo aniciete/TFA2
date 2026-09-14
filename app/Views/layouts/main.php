@@ -35,7 +35,7 @@
                         <span class="brand-title">Foundations</span>
                     </span>
                 </a>
-                <span class="brand-docket" aria-hidden="true">TFA-01 &bull; MVC</span>
+                <span class="brand-docket" aria-hidden="true">Retail Operations</span>
             </div>
 
             <nav class="site-nav" aria-label="Main Navigation">
@@ -79,12 +79,12 @@
         <div class="receipt-tear" aria-hidden="true"></div>
         <div class="container footer-container">
             <div class="receipt-meta" aria-hidden="true">
-                <span class="receipt-tag">[DOCKET: CI4-POS-TFA1]</span>
+                <span class="receipt-tag">STORE DIRECTORY &bull; REGISTER SYSTEM</span>
                 <span class="receipt-divider">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
-                <span class="receipt-tag">[STORE: 001 // LOCAL DEV]</span>
+                <span class="receipt-tag">CENTRAL MARKET</span>
             </div>
-            <p class="footer-course">IT0049 Web System Technologies &bull; Technical Formative Assessment 1</p>
-            <p class="footer-subtext">CodeIgniter 4 POS Foundations &bull; In-Memory Static Records</p>
+            <p class="footer-course">POS Foundations &bull; Retail Point of Sale &amp; Account Management</p>
+            <p class="footer-subtext">Store Operations Portal &bull; Customer &amp; Staff Administration</p>
         </div>
     </footer>
 </body>

@@ -6,44 +6,44 @@
     <section class="home-hero" aria-labelledby="hero-title">
         <div class="hero-mast">
             <div class="tag-row">
-                <span class="market-tag">CodeIgniter 4 Core Architecture</span>
-                <span class="status-indicator" aria-label="System status operational">
+                <span class="market-tag">Store Operations</span>
+                <span class="status-indicator" aria-label="System status active">
                     <span class="status-pip" aria-hidden="true"></span>
-                    <span class="status-label">Operational</span>
+                    <span class="status-label">Counter System Active</span>
                 </span>
             </div>
             <h1 id="hero-title" class="page-title hero-title">Point-of-Sale Foundations</h1>
             <p class="hero-lead">
-                A modular four-page web application demonstrating Model-View-Controller fundamentals, clean route resolution, and controller-managed data structures.
+                A streamlined retail operations portal for managing customer relationships, store staff roles, and daily checkout counter workflows.
             </p>
         </div>
     </section>
 
-    <aside class="facts-panel" aria-label="System facts and specifications">
+    <aside class="facts-panel" aria-label="Store overview and statistics">
         <div class="panel-header">
-            <span class="panel-kicker">SYSTEM LEDGER</span>
-            <span class="panel-badge">TFA-01</span>
+            <span class="panel-kicker">STORE OVERVIEW</span>
+            <span class="panel-badge">ACTIVE</span>
         </div>
         <ul class="facts-list" role="list">
             <li class="fact-item">
+                <span class="fact-num">05</span>
+                <div class="fact-details">
+                    <strong class="fact-label">Registered Customers</strong>
+                    <span class="fact-desc">Active retail and commercial accounts</span>
+                </div>
+            </li>
+            <li class="fact-item">
+                <span class="fact-num">05</span>
+                <div class="fact-details">
+                    <strong class="fact-label">Authorized Staff</strong>
+                    <span class="fact-desc">Store managers, supervisors, and cashiers</span>
+                </div>
+            </li>
+            <li class="fact-item">
                 <span class="fact-num">04</span>
                 <div class="fact-details">
-                    <strong class="fact-label">Configured Routes</strong>
-                    <span class="fact-desc">Home, About, Customers, Users</span>
-                </div>
-            </li>
-            <li class="fact-item">
-                <span class="fact-num">02</span>
-                <div class="fact-details">
-                    <strong class="fact-label">In-Memory Directories</strong>
-                    <span class="fact-desc">Customer and staff user stores</span>
-                </div>
-            </li>
-            <li class="fact-item">
-                <span class="fact-num">00</span>
-                <div class="fact-details">
-                    <strong class="fact-label">Database Required</strong>
-                    <span class="fact-desc">Self-contained static array state</span>
+                    <strong class="fact-label">Store Modules</strong>
+                    <span class="fact-desc">Core portals for accounts and operations</span>
                 </div>
             </li>
         </ul>
@@ -53,7 +53,7 @@
     <section class="directory-modules" aria-label="Application Directories">
         <article class="directory-card card-customers">
             <div class="card-meta">
-                <span class="module-number">DIR // 01</span>
+                <span class="module-number">Retail Directory</span>
                 <span class="record-pill">5 Records</span>
             </div>
             <div class="card-header">
@@ -68,7 +68,7 @@
                 <h2 class="card-title">Customer Accounts</h2>
             </div>
             <p class="card-description">
-                View customer directories populated from static PHP array structures before permanent database integration.
+                Access verified customer profiles, contact information, and commercial billing details for checkout service.
             </p>
             <div class="card-footer">
                 <a href="<?= site_url('customers') ?>" class="button button-primary">
@@ -80,7 +80,7 @@
 
         <article class="directory-card card-users">
             <div class="card-meta">
-                <span class="module-number">DIR // 02</span>
+                <span class="module-number">Staff Directory</span>
                 <span class="record-pill">5 Users</span>
             </div>
             <div class="card-header">
@@ -96,7 +96,7 @@
                 <h2 class="card-title">User Accounts</h2>
             </div>
             <p class="card-description">
-                Browse staff accounts, operational roles, and access credentials maintained inside the controller layer.
+                Manage authorized store personnel, terminal credentials, and role-based permissions across daily retail shifts.
             </p>
             <div class="card-footer">
                 <a href="<?= site_url('users') ?>" class="button button-primary">
@@ -110,35 +110,35 @@
     <!-- Horizontal Architecture Feature -->
     <section class="architecture-feature" aria-labelledby="arch-title">
         <div class="feature-left">
-            <span class="market-tag tag-sage">SYSTEM BLUEPRINT</span>
-            <h2 id="arch-title" class="card-title feature-heading">Architecture &amp; Flow</h2>
+            <span class="market-tag tag-sage">OPERATIONAL BLUEPRINT</span>
+            <h2 id="arch-title" class="card-title feature-heading">Store Service &amp; Counter Flow</h2>
             <p class="card-description">
-                Examine how HTTP requests map through CodeIgniter routing, execute controller methods, and populate view templates.
+                An integrated checkout workflow connecting counter customer service, payment entry, and store administration.
             </p>
         </div>
-        <div class="feature-pipeline" aria-label="Request lifecycle pipeline">
+        <div class="feature-pipeline" aria-label="Service lifecycle pipeline">
             <div class="pipe-node">
                 <span class="pipe-index">01</span>
-                <span class="pipe-name">URL Request</span>
+                <span class="pipe-name">Customer Check-In</span>
             </div>
             <span class="pipe-connector" aria-hidden="true">&rarr;</span>
             <div class="pipe-node">
                 <span class="pipe-index">02</span>
-                <span class="pipe-name">Router</span>
+                <span class="pipe-name">Order Entry</span>
             </div>
             <span class="pipe-connector" aria-hidden="true">&rarr;</span>
             <div class="pipe-node">
                 <span class="pipe-index">03</span>
-                <span class="pipe-name">Controller</span>
+                <span class="pipe-name">Payment Processing</span>
             </div>
             <span class="pipe-connector" aria-hidden="true">&rarr;</span>
             <div class="pipe-node">
                 <span class="pipe-index">04</span>
-                <span class="pipe-name">Rendered View</span>
+                <span class="pipe-name">Account Receipt</span>
             </div>
         </div>
         <div class="feature-actions">
-            <a href="<?= site_url('about') ?>" class="button button-secondary">Learn About MVC</a>
+            <a href="<?= site_url('about') ?>" class="button button-secondary">About the Platform</a>
         </div>
     </section>
 </div>
