@@ -10,9 +10,9 @@
                 <span class="status-label">Operational Guide</span>
             </span>
         </div>
-        <h1 class="page-title">About POS Foundations</h1>
+        <h1 class="page-title">About POS Database</h1>
         <p class="section-lead">
-            POS Foundations delivers front-counter retail management, customer relationship directories, and staff access administration designed for modern store operations.
+            POS Database delivers front-counter retail management, customer directories, and user account administration backed by relational MySQL storage and CodeIgniter 4 Models.
         </p>
     </header>
 
@@ -35,7 +35,7 @@
                     <div class="node-card">
                         <div class="node-kicker">STEP 01 &bull; CHECK-IN</div>
                         <strong class="flow-step-title">1. Customer Identification</strong>
-                        <p class="flow-step-text">Cashiers look up registered retail or commercial customer profiles to verify account status, contact preferences, and special pricing.</p>
+                        <p class="flow-step-text">Cashiers look up registered customer profiles retrieved from the MySQL database to verify account status, contact preferences, and special pricing.</p>
                     </div>
                 </li>
 
@@ -59,7 +59,7 @@
                     <div class="node-card">
                         <div class="node-kicker">STEP 03 &bull; STAFF PROCESSING</div>
                         <strong class="flow-step-title">3. Staff Processing</strong>
-                        <p class="flow-step-text">Orders are authorized under active staff login credentials, maintaining clear accountability across all cashier and supervisor shifts.</p>
+                        <p class="flow-step-text">Orders are verified and processed under active staff account records retrieved directly from the database via CodeIgniter Models.</p>
                     </div>
                 </li>
 
@@ -77,35 +77,35 @@
             </ol>
         </section>
 
-        <!-- Operations Policy Memo -->
+        <!-- Database Architecture Memo -->
         <aside class="storage-dispatch-memo" aria-labelledby="memo-heading">
             <div class="memo-mast">
                 <div class="memo-top-row">
-                    <span class="memo-stamp">OPERATIONS POLICY</span>
-                    <span class="memo-ref">STORE ACCESS PROTOCOL</span>
+                    <span class="memo-stamp">DATABASE ARCHITECTURE</span>
+                    <span class="memo-ref">MODEL PERSISTENCE PROTOCOL</span>
                 </div>
-                <h2 id="memo-heading" class="memo-title">Role-Based Access Control</h2>
+                <h2 id="memo-heading" class="memo-title">Relational Database &amp; Models</h2>
             </div>
             <div class="memo-content">
                 <p class="memo-lead">
-                    POS Foundations enforces strict operational separation across store personnel to safeguard register drawers, verify customer details, and maintain accountability across daily floor operations.
+                    POS Database replaces temporary static arrays with MySQL persistence. CodeIgniter 4 Models provide active record and Query Builder capabilities to retrieve structured store data cleanly without raw SQL.
                 </p>
                 <div class="memo-meta-ledger">
                     <div class="ledger-row">
-                        <span class="ledger-term">Store Administrator:</span>
-                        <span class="ledger-value">Full operational control and configuration</span>
+                        <span class="ledger-term">CustomerModel:</span>
+                        <span class="ledger-value">Maps to customers table (id, full_name, email, phone, created_at)</span>
                     </div>
                     <div class="ledger-row">
-                        <span class="ledger-term">Shift Supervisor:</span>
-                        <span class="ledger-value">Register approvals and transaction overrides</span>
+                        <span class="ledger-term">UserModel:</span>
+                        <span class="ledger-value">Maps to users table (id, username, full_name, created_at)</span>
                     </div>
                     <div class="ledger-row">
-                        <span class="ledger-term">Cashier Staff:</span>
-                        <span class="ledger-value">Checkout sales and receipt issuance</span>
+                        <span class="ledger-term">Query Builder:</span>
+                        <span class="ledger-value">Retrieves records using orderBy('id', 'ASC')-&gt;findAll()</span>
                     </div>
                     <div class="ledger-row">
-                        <span class="ledger-term">Inventory Clerk:</span>
-                        <span class="ledger-value">Stock directory and catalog updates</span>
+                        <span class="ledger-term">Data Sanitization:</span>
+                        <span class="ledger-value">All view variables safely rendered via esc()</span>
                     </div>
                 </div>
             </div>

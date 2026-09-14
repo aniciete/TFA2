@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title ?? 'POS Foundations') ?></title>
+    <title><?= esc($title ?? 'POS Database') ?></title>
     <link rel="icon" type="image/svg+xml" href="<?= base_url('favicon.svg') ?>">
     <link rel="alternate icon" href="<?= base_url('favicon.ico') ?>">
     <?php
@@ -21,7 +21,7 @@
     <header class="site-header" role="banner">
         <div class="container header-container">
             <div class="brand-group">
-                <a href="<?= site_url('/') ?>" class="brand-link" aria-label="POS Foundations Home">
+                <a href="<?= site_url('/') ?>" class="brand-link" aria-label="POS Database Home">
                     <span class="brand-mark" aria-hidden="true">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="2" y="2" width="24" height="24" rx="3" fill="#173c2a"/>
@@ -32,7 +32,7 @@
                     </span>
                     <span class="brand-text">
                         <span class="brand-badge">POS</span>
-                        <span class="brand-title">Foundations</span>
+                        <span class="brand-title">Database</span>
                     </span>
                 </a>
                 <span class="brand-docket" aria-hidden="true">Retail Operations</span>
@@ -83,7 +83,7 @@
                 <span class="receipt-divider">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
                 <span class="receipt-tag">CENTRAL MARKET</span>
             </div>
-            <p class="footer-course">POS Foundations &bull; Retail Point of Sale &amp; Account Management</p>
+            <p class="footer-course">POS Database &bull; Retail Point of Sale &amp; Account Management</p>
             <p class="footer-subtext">Store Operations Portal &bull; Customer &amp; Staff Administration</p>
         </div>
     </footer>

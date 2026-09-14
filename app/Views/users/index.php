@@ -8,11 +8,11 @@
                 <span class="market-tag">Staff Directory</span>
                 <span class="status-indicator">
                     <span class="status-pip" aria-hidden="true"></span>
-                    <span class="status-label">Access Control</span>
+                    <span class="status-label">Database Verified</span>
                 </span>
             </div>
             <h1 class="page-title">User Accounts</h1>
-            <p class="section-lead">Authorized internal personnel, operational roles, and system operators.</p>
+            <p class="section-lead">Authorized internal personnel and system operator records.</p>
         </div>
         <div class="overlapping-stat" aria-label="User summary count">
             <span class="stat-giant" aria-hidden="true"><?= sprintf('%02d', count($users)) ?></span>
@@ -31,7 +31,7 @@
                     <th scope="col" class="th-num">#</th>
                     <th scope="col">Username</th>
                     <th scope="col">Full Name</th>
-                    <th scope="col">System Role</th>
+                    <th scope="col">Created At</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,9 +40,7 @@
                         <td class="td-num" data-label="#"><?= sprintf('%02d', $index + 1) ?></td>
                         <td class="cell-mono tabular-num" data-label="Username"><?= esc($user['username']) ?></td>
                         <td class="cell-primary" data-label="Full Name"><?= esc($user['full_name']) ?></td>
-                        <td class="cell-role" data-label="System Role">
-                            <span class="role-badge role-<?= strtolower(explode(' ', $user['role'])[0]) ?>"><?= esc($user['role']) ?></span>
-                        </td>
+                        <td class="cell-mono tabular-num" data-label="Created At"><?= esc($user['created_at']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -51,7 +49,7 @@
 
     <div class="data-notice">
         <span class="notice-icon" aria-hidden="true">&bull;</span>
-        <p>Internal staff directory and register authorization records.</p>
+        <p>Internal staff directory backed by MySQL database records.</p>
     </div>
 </div>
 <?= $this->endSection() ?>

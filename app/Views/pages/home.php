@@ -12,9 +12,9 @@
                     <span class="status-label">Counter System Active</span>
                 </span>
             </div>
-            <h1 id="hero-title" class="page-title hero-title">Point-of-Sale Foundations</h1>
+            <h1 id="hero-title" class="page-title hero-title">Point-of-Sale Database</h1>
             <p class="hero-lead">
-                A streamlined retail operations portal for managing customer relationships, store staff roles, and daily checkout counter workflows.
+                A streamlined retail operations portal for managing customer relationships, store staff accounts, and daily checkout counter workflows backed by MySQL database models.
             </p>
         </div>
     </section>
@@ -36,7 +36,7 @@
                 <span class="fact-num">05</span>
                 <div class="fact-details">
                     <strong class="fact-label">Authorized Staff</strong>
-                    <span class="fact-desc">Store managers, supervisors, and cashiers</span>
+                    <span class="fact-desc">Active store operator and staff accounts</span>
                 </div>
             </li>
             <li class="fact-item">
@@ -68,7 +68,7 @@
                 <h2 class="card-title">Customer Accounts</h2>
             </div>
             <p class="card-description">
-                Access verified customer profiles, contact information, and commercial billing details for checkout service.
+                Access verified customer profiles, contact information, and commercial billing details retrieved from MySQL storage.
             </p>
             <div class="card-footer">
                 <a href="<?= site_url('customers') ?>" class="button button-primary">
@@ -96,7 +96,7 @@
                 <h2 class="card-title">User Accounts</h2>
             </div>
             <p class="card-description">
-                Manage authorized store personnel, terminal credentials, and role-based permissions across daily retail shifts.
+                Manage authorized store personnel, terminal credentials, and user account records retrieved via CodeIgniter Models.
             </p>
             <div class="card-footer">
                 <a href="<?= site_url('users') ?>" class="button button-primary">
@@ -113,7 +113,7 @@
             <span class="market-tag tag-sage">OPERATIONAL BLUEPRINT</span>
             <h2 id="arch-title" class="card-title feature-heading">Store Service &amp; Counter Flow</h2>
             <p class="card-description">
-                An integrated checkout workflow connecting counter customer service, payment entry, and store administration.
+                An integrated checkout workflow connecting counter customer service, database query models, and store administration.
             </p>
         </div>
         <div class="feature-pipeline" aria-label="Service lifecycle pipeline">
